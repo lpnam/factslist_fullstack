@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Coiny&family=Sono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script type="module" src="controller/controller.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="logo">
+          <img
+            src="./img/logo.png"
+            height="68"
+            width="68"
+            alt="Today I Learned Logo"
+          />
+          <h1>Today I Learned</h1>
+        </div>
+
+        <button class="btn btn-large share-fact">Share a fact</button>
+      </header>
+      <form action="" class="fact-form hidden">
+        <input
+          class="input-fact"
+          type="text"
+          placeholder="Share a fact . . ."
+        />
+        <span>200</span>
+        <input
+          class="input-source"
+          type="text"
+          placeholder="Trustworthy source . . ."
+        />
+        <select class="input-category">
+          <option value="">Choose Category</option>
+          <option value="technology">Technology</option>
+          <option value="science">Science</option>
+          <option value="finace">Finace</option>
+          <option value="society">Society</option>
+          <option value="entertaiment">Entertaiment</option>
+          <option value="health">Health</option>
+          <option value="history">History</option>
+          <option value="news">News</option>
+        </select>
+        <button class="btn btn-large post">Post</button>
+      </form>
+      <main class="main">
+        <aside>
+          <ul class="category-list">
+            <li class="category">
+              <button class="btn btn-all-categories">All</button>
+            </li>
+            <!-- <li><button class="upper">Technology</button></li>
+          <li><button class="upper">Science</button></li>
+          <li><button class="upper">Finace</button></li>
+          <li><button class="upper">Society</button></li>
+          <li><button class="upper">Entertaiment</button></li>
+          <li><button class="upper">Health</button></li>
+          <li><button class="upper">History</button></li>
+          <li><button class="upper">News</button></li> -->
+          </ul>
+        </aside>
+        <section>
+          <ul class="fact-list">
+            <!-- <li>
+            <p>This is fact</p>
+            <a href="source" target="_blank">(Source)</a>
+            <span>#thiscategory</span>
+            <button>👍 votesInteresting</button>
+            <button>🤯 votesMindblowing</button>
+            <button>⛔️ votesFalse</button>
+          </li> -->
+          </ul>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

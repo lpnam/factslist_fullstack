@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.3",
+    "ajax": "^0.0.4",
+    "core-js": "^3.35.1",
+    "regenerator-runtime": "^0.14.1"
+  }
+}
