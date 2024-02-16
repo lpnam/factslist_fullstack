@@ -2,10 +2,21 @@ import View from "./View.js";
 
 export class ButtonView extends View {
   _parentEl = document.querySelector(".category-list");
+  clickCategoryHandler(handler) {
+    this._parentEl.addEventListener("click", function (e) {
+      const btn = e.target.closest(".btn");
+      if (!btn) return;
+      handler(btn.textContent);
+    });
+  }
   _generateMarkup() {
-    return this._data
-      .map(
-        (data) => `
+    return (
+      `<li class="category">
+        <button class="btn btn-all-categories">All</button>
+      </li>` +
+      this._data
+        .map(
+          (data) => `
                     <li class="category">
                         <button
                             class="btn btn-category"
@@ -15,8 +26,9 @@ export class ButtonView extends View {
                         </button>
                     </li>
                 `
-      )
-      .join("");
+        )
+        .join("")
+    );
   }
 }
 

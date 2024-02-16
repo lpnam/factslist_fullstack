@@ -23,6 +23,31 @@ export const loadCategories = async function () {
   }
 };
 
+export const postFact = async function (text_data, source_data, category_data) {
+  try {
+    const { data, error } = await database
+      .from("facts")
+      .insert([
+        { text: text_data, source: source_data, category: category_data },
+      ])
+      .select();
+    if (error) {
+      console.error("Error inserting data:", error.message);
+      return false;
+    } else {
+      console.log("Data inserted successfully: ", data);
+      return true;
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const loadFilter = function (category) {
+  const filter_data = data.facts.filter((fact) => fact.category === category);
+  return filter_data;
+};
+
 // LINK TO APP SAMPLE DATA: https://docs.google.com/spreadsheets/d/1eeldcA_OwP4DHYEvjG0kDe0cRys-cDPhc_E9P9G1e3I/edit#gid=0
 
 // 👍 🤯 ⛔️

@@ -27,20 +27,33 @@ const controlForm = function () {
     form.classList.toggle("hidden");
   });
 };
+
+const controlFilter = async function (category_filter) {
+  // const filter_data = model.loadFilter();
+  // factView.render(filter_data);
+};
+
 const controlPostNewFact = function () {
-  const buttonPost = document.querySelector(".post");
   const inputFact = document.querySelector(".input-fact");
   const inputSource = document.querySelector(".input-source");
   const inputCategory = document.querySelector(".input-category");
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    console.log(inputFact.value);
-    console.log(inputSource.value);
-    console.log(inputCategory.value);
+    // console.log(inputFact.value, inputSource.value, inputCategory.value);
+    const check = await model.postFact(
+      inputFact.value,
+      inputSource.value,
+      inputCategory.value
+    );
+    if (check) {
+      await model.loadFacts();
+      factView.render(model.data.facts);
+    }
   });
 };
 
 const init = function () {
+  // buttonView.clickCategoryHandler(controlFilter);
   controlFacts();
   controlButton();
   controlForm();
