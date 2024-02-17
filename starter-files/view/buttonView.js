@@ -4,9 +4,10 @@ export class ButtonView extends View {
   _parentEl = document.querySelector(".category-list");
   clickCategoryHandler(handler) {
     this._parentEl.addEventListener("click", function (e) {
-      const btn = e.target.closest(".btn");
+      let btn = e.target.closest(".btn");
       if (!btn) return;
-      handler(btn.textContent);
+      const category_data = btn.textContent.trim().toLowerCase();
+      handler(category_data);
     });
   }
   _generateMarkup() {

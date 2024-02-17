@@ -3,6 +3,18 @@ import * as time from "../time.js";
 
 export class FactView extends View {
   _parentEl = document.querySelector(".fact-list");
+  // _parentButton = document.querySelector(".vote-buttons");
+  handlerClickVote(handler) {
+    this._parentEl.addEventListener("click", function (e) {
+      const btn = e.target.closest(".vote-button");
+      if (!btn) return;
+      console.log(btn.dataset.vote);
+      handler();
+      // if (btn.dataset.vote === 'interesting') handler[0]();
+      // else if (btn.dataset.vote === 'mindblowing') handler[1]();
+      // else if (btn.dataset.vote === 'votefalse') handler[3]();
+    });
+  }
   _generateMarkup() {
     return this._data
       .map(
@@ -18,13 +30,13 @@ export class FactView extends View {
                           <p> ${time.displayTime(data.createdin)}</p>
                         </p>
                         <div class="vote-buttons">
-                          <button>👍 <strong>${
+                          <button data-vote="interesting" class="vote-button">👍 <strong>${
                             data.votesinteresting
                           }</strong></button>
-                          <button>🤯 <strong>${
+                          <button data-vote="mindblowing" class="vote-button">🤯 <strong>${
                             data.votesmindblowing
                           }</strong></button>
-                          <button>⛔️ <strong>${
+                          <button data-vote="votefalse" class="vote-button">⛔️ <strong>${
                             data.votesfalse
                           }</strong></button>
                         </div>

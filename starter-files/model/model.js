@@ -3,6 +3,7 @@ import database from "../db.js";
 export const data = {
   categories: [],
   facts: [],
+  filter: [],
 };
 
 export const loadFacts = async function () {
@@ -43,8 +44,33 @@ export const postFact = async function (text_data, source_data, category_data) {
   }
 };
 
+export const updateVote = async function (
+  interesting,
+  mindblowing,
+  false_vote
+) {
+  try {
+    const z = await database
+      .from("facts")
+      .update({ votesMindblowing: 0 + 1 })
+      .eq("id", 27);
+    // if (error) {
+    //   console.error("Error updating data:", error.message);
+    //   return false;
+    // } else {
+    //   console.log("Data inserted successfully: ", data);
+    //   return true;
+    // }
+    console.log(z);
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const loadFilter = function (category) {
+  if (category === "all") return data.facts;
   const filter_data = data.facts.filter((fact) => fact.category === category);
+  // data.facts = filter_data;
   return filter_data;
 };
 

@@ -28,9 +28,15 @@ const controlForm = function () {
   });
 };
 
-const controlFilter = async function (category_filter) {
-  // const filter_data = model.loadFilter();
-  // factView.render(filter_data);
+const controlFilter = async function (category_data) {
+  const filter_data = model.loadFilter(category_data);
+  // model.loadFilter(category_data);
+  factView.render(filter_data);
+  // factView.update(filter_data);
+};
+
+const controlVotes = async function () {
+  await model.updateVote(1, 1, 1);
 };
 
 const controlPostNewFact = function () {
@@ -53,7 +59,8 @@ const controlPostNewFact = function () {
 };
 
 const init = function () {
-  // buttonView.clickCategoryHandler(controlFilter);
+  buttonView.clickCategoryHandler(controlFilter);
+  factView.handlerClickVote(controlVotes);
   controlFacts();
   controlButton();
   controlForm();
