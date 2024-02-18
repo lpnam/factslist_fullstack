@@ -7,19 +7,16 @@ export class FactView extends View {
   handlerClickVote(handler) {
     this._parentEl.addEventListener("click", function (e) {
       const btn = e.target.closest(".vote-button");
+      const li_fact = e.target.closest(".fact");
       if (!btn) return;
-      console.log(btn.dataset.vote);
-      handler();
-      // if (btn.dataset.vote === 'interesting') handler[0]();
-      // else if (btn.dataset.vote === 'mindblowing') handler[1]();
-      // else if (btn.dataset.vote === 'votefalse') handler[3]();
+      handler(btn.dataset.vote, Number(li_fact.dataset.key));
     });
   }
   _generateMarkup() {
     return this._data
       .map(
         (data) => `
-                    <li class="fact">
+                    <li class="fact" data-key="${data.fact_id}">
                         <p>${data.text}
                           <a class="source" href="${
                             data.source

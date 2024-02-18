@@ -28,15 +28,16 @@ const controlForm = function () {
   });
 };
 
-const controlFilter = async function (category_data) {
+const controlFilter = function (category_data) {
   const filter_data = model.loadFilter(category_data);
   // model.loadFilter(category_data);
-  factView.render(filter_data);
+  factView.render(model.data.filter);
   // factView.update(filter_data);
 };
 
-const controlVotes = async function () {
-  await model.updateVote(1, 1, 1);
+const controlVotes = async function (type_btn, fact_id) {
+  await model.updateVote(type_btn, fact_id);
+  factView.render(model.data.filter);
 };
 
 const controlPostNewFact = function () {
@@ -45,7 +46,6 @@ const controlPostNewFact = function () {
   const inputCategory = document.querySelector(".input-category");
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    // console.log(inputFact.value, inputSource.value, inputCategory.value);
     const check = await model.postFact(
       inputFact.value,
       inputSource.value,
