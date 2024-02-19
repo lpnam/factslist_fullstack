@@ -12,6 +12,15 @@ export class FactView extends View {
       handler(btn.dataset.vote, Number(li_fact.dataset.key));
     });
   }
+  handlerClickDelete(handler) {
+    this._parentEl.addEventListener("click", function (e) {
+      const btn = e.target.closest(".btn-delete");
+      const li_fact = e.target.closest(".fact");
+      if (!btn) return;
+      handler(Number(li_fact.dataset.key));
+    });
+  }
+
   _generateMarkup() {
     return this._data
       .map(
@@ -36,6 +45,7 @@ export class FactView extends View {
                           <button data-vote="votefalse" class="vote-button">⛔️ <strong>${
                             data.votesfalse
                           }</strong></button>
+                          <button class="btn-delete"><strong>DELETE</strong></button>
                         </div>
                     </li>
                 `

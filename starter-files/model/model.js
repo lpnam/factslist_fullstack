@@ -11,6 +11,7 @@ export const loadFacts = async function () {
     data.facts = [];
     let { data: facts } = await database.rpc("fetch_facts");
     facts.map((fact) => data.facts.push(fact));
+    data.filter = data.facts;
   } catch (error) {
     throw error;
   }
@@ -62,6 +63,16 @@ export const updateVote = async function (type_btn, fact_id) {
         votesFalse: data.facts[index].votesfalse,
       })
       .eq("id", fact_id);
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const deleteFact = async function (fact_id) {
+  try {
+    const index = data.facts.findIndex((fact) => fact.fact_id === fact_id);
+    data.filter.splice(index, 1);
+    await database.from("facts").delete().eq("id", fact_id);
   } catch (error) {
     throw error;
   }

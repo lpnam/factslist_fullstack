@@ -29,7 +29,7 @@ const controlForm = function () {
 };
 
 const controlFilter = function (category_data) {
-  const filter_data = model.loadFilter(category_data);
+  model.loadFilter(category_data);
   // model.loadFilter(category_data);
   factView.render(model.data.filter);
   // factView.update(filter_data);
@@ -38,6 +38,12 @@ const controlFilter = function (category_data) {
 const controlVotes = async function (type_btn, fact_id) {
   await model.updateVote(type_btn, fact_id);
   factView.render(model.data.filter);
+};
+
+const controlDelete = async function (fact_id) {
+  await model.deleteFact(fact_id);
+  factView.render(model.data.filter);
+  await model.loadFacts();
 };
 
 const controlPostNewFact = function () {
@@ -61,6 +67,7 @@ const controlPostNewFact = function () {
 const init = function () {
   buttonView.clickCategoryHandler(controlFilter);
   factView.handlerClickVote(controlVotes);
+  factView.handlerClickDelete(controlDelete);
   controlFacts();
   controlButton();
   controlForm();
