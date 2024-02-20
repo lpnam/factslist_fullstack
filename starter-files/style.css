@@ -221,6 +221,18 @@ ul {
   }
 }
 
+.spinner {
+  margin: 5rem auto;
+  text-align: center;
+
+  .spin {
+    height: 6rem;
+    width: 6rem;
+    fill: #f9f5f3;
+    animation: rotate 1s infinite linear;
+  }
+}
+
 .hidden {
   display: none;
 }

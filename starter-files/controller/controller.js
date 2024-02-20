@@ -7,6 +7,7 @@ const form = document.querySelector(".fact-form");
 
 const controlFacts = async function () {
   try {
+    factView.renderSpinner();
     await model.loadFacts();
     factView.render(model.data.facts);
   } catch (error) {
