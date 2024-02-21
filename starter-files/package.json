@@ -4,5 +4,20 @@
     "ajax": "^0.0.4",
     "core-js": "^3.35.1",
     "regenerator-runtime": "^0.14.1"
-  }
+  },
+  "devDependencies": {
+    "parcel": "^2.11.0"
+  },
+  "name": "starter-files",
+  "version": "1.0.0",
+  "source": "index.html",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html --dist-dir ./dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }

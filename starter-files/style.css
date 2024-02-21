@@ -225,7 +225,7 @@ ul {
   margin: 5rem auto;
   text-align: center;
 
-  .spin {
+  svg {
     height: 6rem;
     width: 6rem;
     fill: #f9f5f3;
